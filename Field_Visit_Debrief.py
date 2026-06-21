@@ -91,7 +91,7 @@ if st.button("Generate AI Debrief", use_container_width=True):
     # --------------------------
     # SAVE AUDIO
     # --------------------------
-
+    audio_path=""
     if audio:
 
         audio_path = f"uploads/audio/{audio.name}"
@@ -107,7 +107,7 @@ if st.button("Generate AI Debrief", use_container_width=True):
 
         transcript = ""
 
-        if audio_path:
+        if audio:
 
             transcript = transcribe_audio(audio_path)
 
