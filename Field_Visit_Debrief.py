@@ -11,7 +11,6 @@ from speech import transcribe_audio
 
 init_db()
 
-os.makedirs("uploads/photos", exist_ok=True)
 os.makedirs("uploads/audio", exist_ok=True)
 
 st.set_page_config(
@@ -92,12 +91,15 @@ if st.button("Generate AI Debrief", use_container_width=True):
     # SAVE AUDIO
     # --------------------------
 
+    audio_path = ""
+
     if audio:
 
         audio_path = f"uploads/audio/{audio.name}"
 
         with open(audio_path, "wb") as f:
             f.write(audio.getbuffer())
+
 
     # --------------------------
     # AI GENERATION
@@ -111,14 +113,17 @@ if st.button("Generate AI Debrief", use_container_width=True):
 
             transcript = transcribe_audio(audio_path)
 
-        combined_notes = notes
+        combined_notes = ""
+
+        if notes.strip():
+
+            combined_notes += "WRITTEN NOTES:\n"
+            combined_notes += notes
 
         if transcript:
 
             combined_notes += "\n\nVOICE MEMO TRANSCRIPT:\n"
             combined_notes += transcript
-
-        ai_result = generate_debrief(combined_notes)
 
     # --------------------------
     # SAVE TO DATABASE
@@ -192,4 +197,6 @@ if st.button("Generate AI Debrief", use_container_width=True):
         tag_list = tags
 
     for tag in tag_list:
-        st.badge(tag)
+
+        if str(tag).strip():
+            st.badge(tag)
