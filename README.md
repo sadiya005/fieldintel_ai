@@ -168,7 +168,7 @@ Live App: https://fieldintelai-ee6bkblr3bnmhxfwihn5y3.streamlit.app/
 
 **Sadiya Sajid**
 
-🔗 LinkedIn: https://www.linkedin.com/in/sadiyasajid/
+[LinkedIn](https://www.linkedin.com/in/sadiyasajid/)
 
 ---
 
