@@ -1,21 +1,23 @@
 import whisper
 
-model = whisper.load_model("small")
+model = whisper.load_model("base")
 
 def transcribe_audio(audio_path):
 
     try:
 
-        result = model.transcribe(audio_path)
+        result = model.transcribe(
+            audio_path,
+            language="en"
+        )
 
-        print("TRANSCRIPT:")
-        print(result["text"])
+        print("FULL WHISPER RESULT:")
+        print(result)
 
-        return result["text"]
+        return result["text"].strip()
 
     except Exception as e:
 
-        print("Transcription Error:", e)
+        print("Transcription Error:", str(e))
 
         return ""
-    print(result)
