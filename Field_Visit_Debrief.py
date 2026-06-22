@@ -111,14 +111,17 @@ if st.button("Generate AI Debrief", use_container_width=True):
 
             transcript = transcribe_audio(audio_path)
 
-        combined_notes = notes
+        combined_notes = ""
+
+        if notes.strip():
+
+            combined_notes += "WRITTEN NOTES:\n"
+            combined_notes += notes
 
         if transcript:
 
             combined_notes += "\n\nVOICE MEMO TRANSCRIPT:\n"
             combined_notes += transcript
-
-        ai_result = generate_debrief(combined_notes)
 
     # --------------------------
     # SAVE TO DATABASE
