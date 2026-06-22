@@ -11,9 +11,6 @@ def transcribe_audio(audio_path):
             language="en"
         )
 
-        print("FULL WHISPER RESULT:")
-        print(result)
-
         return result["text"].strip()
 
     except Exception as e:
