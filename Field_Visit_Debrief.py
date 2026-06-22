@@ -112,8 +112,6 @@ if st.button("Generate AI Debrief", use_container_width=True):
         if audio_path:
 
             transcript = transcribe_audio(audio_path)
-            st.write("Audio Path:", audio_path)
-            st.write("Transcript:", repr(transcript))
 
         combined_notes = ""
 
@@ -132,7 +130,6 @@ if st.button("Generate AI Debrief", use_container_width=True):
             st.error(
             "No usable text was found in the notes or voice memo."
             )
-            st.stop()
 
         ai_result = generate_debrief(combined_notes)
 
@@ -166,7 +163,7 @@ if st.button("Generate AI Debrief", use_container_width=True):
     # DISPLAY RESULTS
     # --------------------------
 
-    st.success("Visit Saved Successfully")
+    st.success("Visit logged and analyzed successfully.")
 
     if transcript:
 
