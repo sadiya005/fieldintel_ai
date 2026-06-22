@@ -18,3 +18,4 @@ def transcribe_audio(audio_path):
         print("Transcription Error:", e)
 
         return ""
+    print(result)
