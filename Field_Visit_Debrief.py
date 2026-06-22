@@ -91,17 +91,15 @@ if st.button("Generate AI Debrief", use_container_width=True):
     # --------------------------
     # SAVE AUDIO
     # --------------------------
-    audio_path=""
+
+    audio_path = ""
+
     if audio:
 
         audio_path = f"uploads/audio/{audio.name}"
 
         with open(audio_path, "wb") as f:
             f.write(audio.getbuffer())
-
-    # --------------------------
-    # AI GENERATION
-    # --------------------------
 
     # --------------------------
 # AI GENERATION
