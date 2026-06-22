@@ -92,8 +92,6 @@ if st.button("Generate AI Debrief", use_container_width=True):
     # SAVE AUDIO
     # --------------------------
 
-    audio_path = ""
-
     if audio:
 
         audio_path = f"uploads/audio/{audio.name}"
@@ -102,33 +100,25 @@ if st.button("Generate AI Debrief", use_container_width=True):
             f.write(audio.getbuffer())
 
     # --------------------------
-# AI GENERATION
-# --------------------------
+    # AI GENERATION
+    # --------------------------
 
-with st.spinner("Generating AI Debrief..."):
+    with st.spinner("Generating AI Debrief..."):
 
-    transcript = ""
+        transcript = ""
 
-    if audio:
+        if audio_path:
 
-        transcript = transcribe_audio(audio_path)
+            transcript = transcribe_audio(audio_path)
 
-    combined_notes = ""
+        combined_notes = notes
 
-    if notes.strip():
+        if transcript:
 
-        combined_notes += "WRITTEN NOTES:\n"
-        combined_notes += notes
+            combined_notes += "\n\nVOICE MEMO TRANSCRIPT:\n"
+            combined_notes += transcript
 
-    if transcript:
-
-        combined_notes += "\n\nVOICE MEMO TRANSCRIPT:\n"
-        combined_notes += transcript
-
-    if audio and not transcript:
-        st.warning("Voice memo uploaded, but no speech could be detected.")
-
-    ai_result = generate_debrief(combined_notes)
+        ai_result = generate_debrief(combined_notes)
 
     # --------------------------
     # SAVE TO DATABASE
