@@ -112,6 +112,8 @@ if st.button("Generate AI Debrief", use_container_width=True):
         if audio_path:
 
             transcript = transcribe_audio(audio_path)
+            st.write("Audio Path:", audio_path)
+            st.write("Transcript:", repr(transcript))
 
         combined_notes = ""
 
