@@ -133,14 +133,6 @@ if st.button("Generate AI Debrief", use_container_width=True):
             "No usable text was found in the notes or voice memo."
             )
             st.stop()
-        st.write("Notes:")
-        st.write(notes)
-        
-        st.write("Transcript:")
-        st.write(transcript)
-        
-        st.write("Combined Notes:")
-        st.write(combined_notes)
 
         ai_result = generate_debrief(combined_notes)
 
